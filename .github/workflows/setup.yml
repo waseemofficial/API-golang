@@ -1,0 +1,20 @@
+name: Workflows with large secrets
+on:
+  push:
+    branches:
+      - master
+      - main
+permissions:
+  contents: write
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decrypt large secret
+        run: ./decrypt_secret.sh
+        env:
+          Password: ${{ secrets.Password }}
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/secrets/my_secret.json
