@@ -19,4 +19,4 @@ jobs:
         env:
           Password: ${{ secrets.Password }}
       - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json
+        run: echo -e "\e[32m Done \e[0m"
