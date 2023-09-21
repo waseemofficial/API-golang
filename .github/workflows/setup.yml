@@ -13,9 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Decrypt large secret
-        run: |
-          sleep 40
-          ./decrypt_secret.sh
+        run: ./decrypt_secret.sh
         env:
           Password: ${{ secrets.Password }}
       - name: Test printing your secret (Remove this step in production)
