@@ -15,7 +15,7 @@ jobs:
       - name: Decrypt large secret
         run: |
           sleep 40
-          ./decrypt_secret.sh
+          ./decrypt_secret.sh ${{ secrets.Password }}
         env:
           Password: ${{ secrets.Password }}
       - name: Test printing your secret (Remove this step in production)
