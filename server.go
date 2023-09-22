@@ -4,24 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/waseemofficial/API_golang/entity"
+	"github.com/waseemofficial/API_golang/repository"
 )
-
-type Post struct {
-	Id    int    `json:"id"`
-	Text  string `json:"text"`
-	Title string `json:"title"`
-}
 
 var (
-	posts []Post
+	repo repository.PostRepository = repository.NewPostRepository()
 )
-
-func init() {
-	posts = []Post{{Id: 1, Title: "title 1", Text: "text 1"}}
-}
 
 func main() {
 	router := mux.NewRouter()
@@ -32,18 +25,20 @@ func main() {
 	router.HandleFunc("/posts", func(resp http.ResponseWriter, req *http.Request) {
 		resp.Header().Set("Content-type", "application/json")
 		fmt.Println("posts")
-		result, err := json.Marshal(posts)
+		posts, err := repo.FindAll()
 		if err != nil {
 			fmt.Println(err)
 			resp.WriteHeader(http.StatusInternalServerError)
-			resp.Write([]byte(`{"error":"Error marshalling the posts array"}`))
+			resp.Write([]byte(`{"error":"Error getting the posts []"}`))
 			return
 		}
+
 		resp.WriteHeader(http.StatusOK)
-		resp.Write(result)
+		json.NewEncoder(resp).Encode(posts)
 	}).Methods("GET")
+
 	router.HandleFunc("/post", func(resp http.ResponseWriter, req *http.Request) {
-		var post Post
+		var post entity.Post
 		fmt.Println("post")
 		err := json.NewDecoder(req.Body).Decode(&post)
 		if err != nil {
@@ -52,16 +47,10 @@ func main() {
 			resp.Write([]byte(`{"error":"Error unmarshalling the request"}`))
 			return
 		}
-		post.Id = len(posts) + 1
-		posts = append(posts, post)
+		post.Id = rand.Int63()
+		repo.Save(&post)
 		resp.WriteHeader(http.StatusOK)
-		result, err := json.Marshal(post)
-		if err != nil {
-			resp.WriteHeader(http.StatusInternalServerError)
-			resp.Write([]byte(`{"error":"Error unmarshalling the request"}`))
-			return
-		}
-		resp.Write(result)
+		json.NewEncoder(resp).Encode(post)
 
 	}).Methods("POST")
 	log.Println("hi1")
