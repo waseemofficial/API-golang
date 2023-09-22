@@ -24,7 +24,7 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/secrets/my_secret.json"
           echo -e "\e[32m $GOOGLE_APPLICATION_CREDENTIALS \e[0m"
-          echo -e "\e[32m $WHEREIS \e[0m"
+          echo -e "\e[32m $WHEREIS GOOGLE_APPLICATION_CREDENTIALS \e[0m"
       - name: setup try
         run: |
           export NAMES="ji sunta ho"
