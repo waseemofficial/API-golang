@@ -8,3 +8,4 @@ gpg --quiet --batch --yes --decrypt --passphrase="$Password" --output $HOME/secr
 
 #export GOOGLE_APPLICATION_CREDENTIALS="$HOME/"
 export NAMES="ji sunta ho"
+echo -e "\e[32m $NAME \e[0m"
