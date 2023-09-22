@@ -48,7 +48,7 @@ func (*repo) FindAll() ([]entity.Post, error) {
 		log.Fatalf("failed to create firestore Client: %v", err)
 		return nil, err
 	}
-
+	defer client.Close()
 	var posts []entity.Post
 	iterator := client.Collection(collectionName).Documents(ctx)
 	for {
@@ -66,7 +66,6 @@ func (*repo) FindAll() ([]entity.Post, error) {
 		posts = append(posts, post)
 	}
 	return posts, nil
-	defer client.Close()
 }
 
 // NeewPostRepositroy

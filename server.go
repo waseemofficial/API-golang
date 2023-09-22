@@ -11,7 +11,7 @@ import (
 	"github.com/waseemofficial/API_golang/entity"
 	"github.com/waseemofficial/API_golang/repository"
 )
-
+C:\Users\ACER\Desktop\git projects\API-golang\my_secret.json
 var (
 	repo repository.PostRepository = repository.NewPostRepository()
 )
@@ -53,6 +53,6 @@ func main() {
 		json.NewEncoder(resp).Encode(post)
 
 	}).Methods("POST")
-	log.Println("hi1")
+	log.Println(port, router)
 	http.ListenAndServe(port, router)
 }
