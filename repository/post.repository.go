@@ -6,6 +6,7 @@ import (
 
 	"cloud.google.com/go/firestore"
 	"github.com/waseemofficial/API_golang/entity"
+	"google.golang.org/api/iterator"
 )
 
 type PostRepository interface {
@@ -13,6 +14,16 @@ type PostRepository interface {
 	FindAll() ([]entity.Post, error)
 }
 type repo struct{}
+
+const (
+	projectId      string = "api-golang-22fab"
+	collectionName string = "posts"
+)
+
+// NeewPostRepositroy
+func NewPostRepository() PostRepository {
+	return &repo{}
+}
 
 // Save implements PostRepository.
 func (*repo) Save(post *entity.Post) (*entity.Post, error) {
@@ -24,7 +35,7 @@ func (*repo) Save(post *entity.Post) (*entity.Post, error) {
 	}
 	defer client.Close()
 	_, _, err = client.Collection(collectionName).Add(ctx, map[string]interface{}{
-		"Id":    post.Id,
+		"ID":    post.ID,
 		"Title": post.Title,
 		"Text":  post.Text,
 	})
@@ -34,11 +45,6 @@ func (*repo) Save(post *entity.Post) (*entity.Post, error) {
 	}
 	return post, nil
 }
-
-const (
-	projectId      string = "api-golang"
-	collectionName string = "posts"
-)
 
 // FindAll implements PostRepository.
 func (*repo) FindAll() ([]entity.Post, error) {
@@ -50,25 +56,23 @@ func (*repo) FindAll() ([]entity.Post, error) {
 	}
 	defer client.Close()
 	var posts []entity.Post
-	iterator := client.Collection(collectionName).Documents(ctx)
+	iter := client.Collection(collectionName).Documents(ctx)
 	for {
-		doc, err := iterator.Next()
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
 		if err != nil {
 			log.Fatalf("Failed to iterate the list of Posts: %v", err)
 			return nil, err
 		}
 
 		post := entity.Post{
-			Id:    doc.Data()["Id"].(int64),
+			ID:    doc.Data()["ID"].(int64),
 			Text:  doc.Data()["Text"].(string),
 			Title: doc.Data()["Title"].(string),
 		}
 		posts = append(posts, post)
 	}
 	return posts, nil
-}
-
-// NeewPostRepositroy
-func NewPostRepository() PostRepository {
-	return &repo{}
 }

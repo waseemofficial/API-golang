@@ -33,3 +33,14 @@ jobs:
         run: echo -e "\e[32m Done \e[0m"
       - name: Print pwd
         run: echo -e "\e[34m $NAMES \e[0m"
+      - uses: actions/setup-go@v4
+        name: using golang now
+        with:
+          go-version: "1.21.1"
+      - run: go version
+      - name: start server
+        run: go run ./server.go
+      - name: stop server
+        run: |
+          sleep 300
+          kill -INT 888
