@@ -24,6 +24,8 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/secrets/my_secret.json"
           echo -e "\e[32m $GOOGLE_APPLICATION_CREDENTIALS \e[0m"
+      - name: setup try
+        run: |
           export NAMES="ji sunta ho"
           echo -e "\e[32m $NAME \e[0m"
       - name: Test printing your secret (Remove this step in production)
