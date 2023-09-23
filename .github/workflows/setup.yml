@@ -39,8 +39,6 @@ jobs:
           go-version: "1.21.1"
       - run: go version
       - name: start server
-        run: go run ./server.go
+        run: echo "golaaang run server" #go run ./server.go
       - name: stop server
-        run: |
-          sleep 300
-          kill -INT 888
+        run: echo -e "\e[34m kill server \e[0m" #kill -INT 888
