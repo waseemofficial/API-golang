@@ -39,7 +39,8 @@ jobs:
         with:
           go-version: "1.21.1"
       - run: go version
-      - uses: BerniWittmann/background-server-action@v1
+      - name: Background Server
+        uses: BerniWittmann/background-server-action@v1.1.1
         with:
           command: go version
           #          build: npm run build
