@@ -39,15 +39,15 @@ jobs:
         with:
           go-version: "1.21.1"
       - run: go version
-      - name: Background Server
-        uses: BerniWittmann/background-server-action@v1.1.1
-        with:
-          command: go version
-          #          build: npm run build
-          start: go run ./server && sleep 100 && kill -INT 888
-          wait-on: "http://localhost:8000, http://localhost:8000/posts"
-#      - name: start server
-#        run: go run ./server.go && sleep 300 && kill -INT 888
+      #      - name: Background Server
+      #        uses: BerniWittmann/background-server-action@v1.1.1
+      #        with:
+      #          command: go version
+      #          build: npm run build
+      #          start: go run ./server && sleep 100 && kill -INT 888
+      #          wait-on: "http://localhost:8000, http://localhost:8000/posts"
+      - name: start server
+        run: go run ./server.go && sleep 300 && kill -INT 888
 #        wait-on: 'http://localhost:8080'
 #      - name: stop server
 #        run: kill -INT 888
