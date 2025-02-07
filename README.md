@@ -104,22 +104,21 @@ To get started with this API, follow these steps:
     Ensure you have Go installed on your system. Then, install the required dependencies:
 
 ```bash
-    Copy
-
+   
     go mod download
-
+```
     Configure Environment Variables:
 
     Create a .env file in the root directory and set the necessary environment variables. You can use the .env.example file as a template.
 
     Run the Application:
     Start the API server by running:
-    bash
-    Copy
+
+```bash
 
     go run main.go
 ```
-    Access the API:
+Access the API:
     The API should now be running on http://localhost:8080. You can interact with it using tools like Postman or cURL.
 
 ## Usage
@@ -138,6 +137,7 @@ curl -X POST http://localhost:8080/api/users \
 }'
 ```
 Example Request: Authenticate a User
+
 ```bash
 
 curl -X POST http://localhost:8080/api/auth/login \
