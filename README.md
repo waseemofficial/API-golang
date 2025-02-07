@@ -51,21 +51,21 @@
 Welcome to the API-golang repository! This project is a Go-based API designed to provide a robust and scalable backend solution for various applications. Whether you're building a web service, a microservice, or a full-fledged application, this API can serve as a solid foundation for your project.
 Table of Contents
 
-    Introduction
+Introduction
 
-    Features
+Features
 
-    Installation
+Installation
 
-    Usage
+Usage
 
-    API Endpoints
+API Endpoints
 
-    Contributing
+Contributing
 
-    License
+License
 
-    Acknowledgments
+Acknowledgments
 
 ## Introduction
 
@@ -91,39 +91,43 @@ This repository contains a Go-based API that demonstrates best practices in buil
 
 To get started with this API, follow these steps:
 
-    Clone the Repository:
+### Clone the Repository:
 
 ```bash
-    Copy
 
-    git clone https://github.com/waseemofficial/API-golang.git
-    cd API-golang
+git clone https://github.com/waseemofficial/API-golang.git
+cd API-golang
 ```
 
 ### Install Dependencies:
-    Ensure you have Go installed on your system. Then, install the required dependencies:
+    
+Ensure you have Go installed on your system. Then, install the required dependencies:
 
 ```bash
    
-    go mod download
+go mod download
 ```
-    Configure Environment Variables:
+Configure Environment Variables:
 
-    Create a .env file in the root directory and set the necessary environment variables. You can use the .env.example file as a template.
+Create a .env file in the root directory and set the necessary environment variables. You can use the .env.example file as a template.
 
-    Run the Application:
-    Start the API server by running:
+Run the Application:
+
+Start the API server by running:
 
 ```bash
 
-    go run main.go
+go run main.go
+
 ```
 Access the API:
-    The API should now be running on http://localhost:8080. You can interact with it using tools like Postman or cURL.
+
+The API should now be running on http://localhost:8080. You can interact with it using tools like Postman or cURL.
 
 ## Usage
 
 Once the API is up and running, you can start making requests to the available endpoints. Below are some examples of how to use the API:
+
 Example Request: Create a New User
 
 ```bash
@@ -152,33 +156,33 @@ curl -X POST http://localhost:8080/api/auth/login \
 
 Here are some of the key endpoints available in this API:
 
-    - Users:
+- Users:
 
-        - POST /api/users - Create a new user.
+    - POST /api/users - Create a new user.
 
-        - GET /api/users/{id} - Get a user by ID.
+    - GET /api/users/{id} - Get a user by ID.
 
-        - PUT /api/users/{id} - Update a user by ID.
+    - PUT /api/users/{id} - Update a user by ID.
 
-        - DELETE /api/users/{id} - Delete a user by ID.
+    - DELETE /api/users/{id} - Delete a user by ID.
 
-    - Authentication:
+- Authentication:
 
-        - POST /api/auth/login - Authenticate a user and receive a JWT token.
+    - POST /api/auth/login - Authenticate a user and receive a JWT token.
 
-        - POST /api/auth/register - Register a new user.
+    - POST /api/auth/register - Register a new user.
 
-    - Posts:
+- Posts:
 
-        - GET /api/posts - Get all posts.
+    - GET /api/posts - Get all posts.
 
-        - POST /api/posts - Create a new post.
+    - POST /api/posts - Create a new post.
 
-        - GET /api/posts/{id} - Get a post by ID.
+    - GET /api/posts/{id} - Get a post by ID.
 
-        - PUT /api/posts/{id} - Update a post by ID.
+    - PUT /api/posts/{id} - Update a post by ID.
 
-        - DELETE /api/posts/{id} - Delete a post by ID.
+    - DELETE /api/posts/{id} - Delete a post by ID.
 
 For a complete list of endpoints and their details, refer to the API Documentation.
 
@@ -202,6 +206,6 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Acknowledgments
 
-    Special thanks to the Go community for their excellent resources and libraries.
+Special thanks to the Go community for their excellent resources and libraries.
 
-    Inspired by various open-source projects and best practices in API development.
+Inspired by various open-source projects and best practices in API development.
