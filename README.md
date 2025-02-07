@@ -53,19 +53,19 @@ Table of Contents
 
 [Introduction](#Introduction)
 
-Features
+[Features](#Features)
 
-Installation
+[Installation](#Installation)
 
-Usage
+[Usage](#Usage)
 
-API Endpoints
+[API Endpoints](#API-Endpoints)
 
-Contributing
+[Contributing](#Contributing)
 
-License
+[License](#License)
 
-Acknowledgments
+[Acknowledgments](#Acknowledgments)
 
 ## Introduction
 
