@@ -46,8 +46,8 @@ jobs:
       #          build: npm run build
       #          start: go run ./server && sleep 100 && kill -INT 888
       #          wait-on: "http://localhost:8000, http://localhost:8000/posts"
-      - name: start server
-        run: go run ./server.go && sleep 300 && kill -INT 888
+#      - name: start server
+#        run: go run ./server.go && sleep 300 && kill -INT 888
 #        wait-on: 'http://localhost:8080'
 #      - name: stop server
 #        run: kill -INT 888
